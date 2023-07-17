@@ -1,3 +1,11 @@
+'''
+The RSSI simulation matrix is made, visualized, and tested here
+
+
+'''
+
+
+
 import math
 import matplotlib.pyplot as plt
 

@@ -1,3 +1,8 @@
+'''
+Here the classes and implementation are prototyped and tested, then migrated to classes.py
+
+'''
+
 import matplotlib.pyplot as plt
 
 

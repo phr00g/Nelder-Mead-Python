@@ -1,3 +1,5 @@
+### Holds all classes and related methods for operations on points and vectors required for downhill simplex optimization
+
 class Point():
     pointz = []
     def __init__(self,x,y):
