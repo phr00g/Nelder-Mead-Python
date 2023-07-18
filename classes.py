@@ -4,7 +4,7 @@ class Point():
     pointz = []
     def __init__(self,x,y):
         self.x = x
-        self.y = y
+        self.y = y #lol
 
         Point.pointz.append(self)
 
