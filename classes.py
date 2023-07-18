@@ -1,5 +1,5 @@
 ### Holds all classes and related methods for operations on points and vectors required for downhill simplex optimization
-
+from matrix_maker import matrix
 class Point():
     pointz = []
     def __init__(self,x,y):
@@ -7,6 +7,16 @@ class Point():
         self.y = y
 
         Point.pointz.append(self)
+
+    def copy(self):
+        return Point(self.x,self.y)
+    
+    def rssi(self):
+
+        #multiply by negative one because we are using minimization algorithm, but we are trying to maximize
+        return -1 * matrix[round(self.y)][round(self.x)]
+    
+
 
 def difference(p1,p2):#not commutative
     difx = p1.x - p2.x
@@ -61,3 +71,8 @@ def shrink(u,v,w):
     vprime = centroid(u,v)
     wprime = centroid(u,w)
     return vprime,wprime
+
+#step 1 - sort - unconditional
+#order points so that w u is best, v is middle, and w is worst
+
+
