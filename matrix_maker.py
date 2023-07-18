@@ -56,18 +56,10 @@ for x in range(size):
 def get_rssi(xloc,yloc): #x from left to right goes 0 to 1000, y from top to bottom goes 0 to 1000, aka we start at top left corner
     
     #multiply by negative one because we are using minimization algorithm, but we are trying to maximize
+    print(xloc,yloc)
     return -1 * matrix[int(yloc)][int(xloc)]
 
 
-
-#to test coordinate system REMOVE WHEN DONE
-
-# matrix = [[0.9 if x < 100 and y < 100 else 0 for y in range(size)] for x in range(size)]
-
-# guess = [20,20]
-# print(get_rssi(guess[0],guess[1]))
-# plt.legend()
-# plt.plot(guess[0],guess[1],'ro')
 
 
 # plt.imshow(matrix)

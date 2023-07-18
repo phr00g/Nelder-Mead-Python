@@ -45,7 +45,7 @@ def reflect(p1,p2,p3): #p1 and p2 are not moving, p3 is
 
     return add(cent,diff)
 
-def extend(p1,p2,p3):
+def extend(p1,p2,p3): #returns point e
     cent = centroid(p1,p2)
     diff = difference(cent,p3)
     extdiffx = diff.x * 2
@@ -72,7 +72,5 @@ def shrink(u,v,w):
     wprime = centroid(u,w)
     return vprime,wprime
 
-#step 1 - sort - unconditional
-#order points so that w u is best, v is middle, and w is worst
 
 

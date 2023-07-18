@@ -12,6 +12,8 @@ from classes import *
 #for now, u v and w must be point objects
 def optimize(objfunc,u,v,w,xmax = 1000,ymax = 1000,tol = 4e-5):
 
+
+
     #shorthand for calling objective function on point
     def f(point):
         return objfunc(point.x,point.y)
@@ -52,27 +54,27 @@ def optimize(objfunc,u,v,w,xmax = 1000,ymax = 1000,tol = 4e-5):
         else:
             return False
         
+    def constrain(point):
+        if point.x > xmax:
+            point.x = xmax -1
+        if point.y > ymax:
+            point.y = ymax -1
+        if point.x < 0:
+            point.x = 0
+        if point.y < 0:
+            point.y = 0
+        return point
 
-            
-    
-
-
-
+        
+#######################################################################################        
+       
     while True:
 
 
         #step 1 - sort - unconditional
-        
-        
         u,v,w = order(u,v,w)
-
-        ####################### they are now ordered
-
-
-        
-
-
-
+        #they are now ordered
+       
         #step 2 - reflect - unconditional
         #reflect worst point w through centroid of remaining points to obtain reflected point r
         #eval get_rssi(r)
@@ -80,6 +82,7 @@ def optimize(objfunc,u,v,w,xmax = 1000,ymax = 1000,tol = 4e-5):
         
         #get reflected point r
         r = reflect(u,v,w)
+        r = constrain(r)
         
         #if r is better than v but worse than u, assign w = r
         if f(r) < f(v) and f(r) >= f(u):
@@ -92,12 +95,6 @@ def optimize(objfunc,u,v,w,xmax = 1000,ymax = 1000,tol = 4e-5):
             else:
                 continue
 
-
-        ###############
-
-
-
-
         #step 3 - extend - if r better than u
         #find extended point e
         #if e better than r , assign w = e  and go to step 6
@@ -105,6 +102,7 @@ def optimize(objfunc,u,v,w,xmax = 1000,ymax = 1000,tol = 4e-5):
 
         if f(r) < f(u):
             e = extend(u,v,w)
+            e = constrain(e)
 
             if f(r) > f(e):
                 w = e.copy()
@@ -182,9 +180,12 @@ def optimize(objfunc,u,v,w,xmax = 1000,ymax = 1000,tol = 4e-5):
             continue
 
 
+p1 = Point(100,200)
+p2 = Point(200,300)
 
+p3 = Point(700,700)
         
-
+print("Best found point at: " , optimize(get_rssi,p1,p2,p3))
 
 
 
