@@ -18,11 +18,7 @@ def optimize(objfunc,u,v,w,xmax = 1000,ymax = 1000,tol = 4e-5):
         #enter coordinates for three intial simplex points
         #determine what value to compare point std dev to for optimization termination in step 6
         #other stuff
-        print(objfunc(w.x,w.y))
-        print(objfunc(v.x,v.y))
-        print(objfunc(u.x,u.y))
         
-        print('------------')
 
         #step 1 - sort - unconditional
         #order points so that w u is best, v is middle, and w is worst
@@ -44,20 +40,7 @@ def optimize(objfunc,u,v,w,xmax = 1000,ymax = 1000,tol = 4e-5):
             v = u.copy()
             u = vtemp.copy()
 
-        print(objfunc(w.x,w.y))
-        print(objfunc(v.x,v.y))
-        print(objfunc(u.x,u.y))
         
-        break
-        quit
-
-
-
-u = Point(200,200)
-v = Point(210,210)
-w = Point(50,50)
-
-optimize(get_rssi,u,v,w)
 
 
 
