@@ -10,7 +10,7 @@ from classes import *
 
 
 #for now, u v and w must be point objects
-def optimize(objfunc,u,v,w,xmax = 1000,ymax = 1000,tol = 4e-5):
+def optimize(objfunc,u,v,w,xmin = 0,ymin=0,xmax = 1000,ymax = 1000,tol = 4e-5):
 
 
 
@@ -59,10 +59,10 @@ def optimize(objfunc,u,v,w,xmax = 1000,ymax = 1000,tol = 4e-5):
             point.x = xmax -1
         if point.y > ymax:
             point.y = ymax -1
-        if point.x < 0:
-            point.x = 0
-        if point.y < 0:
-            point.y = 0
+        if point.x < xmin:
+            point.x = xmin
+        if point.y < ymin:
+            point.y = ymin
         return point
 
         
