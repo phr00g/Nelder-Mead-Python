@@ -1,20 +1,17 @@
 ### Holds all classes and related methods for operations on points and vectors required for downhill simplex optimization
-from matrix_maker import matrix
 class Point():
     pointz = []
     def __init__(self,x,y):
         self.x = x
-        self.y = y #lol lol ol 
+        self.y = y
+        self.coords = "({},{})".format(self.x,self.y)
 
         Point.pointz.append(self)
 
     def copy(self):
         return Point(self.x,self.y)
     
-    def rssi(self):
-
-        #multiply by negative one because we are using minimization algorithm, but we are trying to maximize
-        return -1 * matrix[round(self.y)][round(self.x)]
+    
     
 
 
@@ -71,6 +68,7 @@ def shrink(u,v,w):
     vprime = centroid(u,v)
     wprime = centroid(u,w)
     return vprime,wprime
+
 
 
 
